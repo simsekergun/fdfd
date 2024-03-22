@@ -7,7 +7,7 @@ c_const = sqrt(1/epsilon0_const/mu0_const)
 eta0 = sqrt(mu0_const/epsilon0_const)
 
 def dL(N, xrange, yrange=None):
-    if yrange is None:
+    if yrange == None:
         L = array([diff(xrange)[0]])  # Simulation domain lengths
     else:
         L = array([diff(xrange)[0],
@@ -32,7 +32,7 @@ def assign_val(val_array, region_cond, val_fun, xrange, yrange=None):
     xe = linspace(xrange[0], xrange[1], N[0]+1)
     xc = (xe[:-1]+xe[1:])/2
 
-    if (yrange is None) or len(N) is 1:
+    if (yrange == None) or len(N) == 1:
         # Operate on a 1D grid
 
         if callable(val_fun):
@@ -65,14 +65,14 @@ def mode_source(J, eps_r, xyc, omega, xrange, yrange, Npts=31, normal='x', pol='
     Nside = int((Npts-1)/2)
     inds = arange(-Nside,Nside+1)
 
-    if normal is 'x':
+    if normal == 'x':
         eps_r_src = eps_r[src_ind_x,src_ind_y+inds]
         dh = d_(N[1], yrange)
     else:
         eps_r_src = eps_r[src_ind_x+inds,src_ind_y]
         dh = d_(N[0], xrange)
     
-    if beta_est is None:
+    if beta_est == None:
         beta_est = omega/c_const*abs(eps_r_src).max()
     range = array([0, Npts*dh])
 
