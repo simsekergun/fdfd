@@ -8,7 +8,7 @@ from . import *
 def createDws(w, s, dL, N, matrix_format='csc'):
     Nx = N[0]
     dx = dL[0]
-    if len(N) == not 1:
+    if len(N) != 1:
         Ny = N[1]
         dy = dL[1]
     else:
