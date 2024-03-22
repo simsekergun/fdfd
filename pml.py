@@ -25,12 +25,12 @@ def create_sfactor(wrange, s, omega, Nw, Nw_pml):
     dw = Nw_pml*hw
 
     for i in range(0, Nw):
-        if s is 'f':
+        if s == 'f':
             if i <= Nw_pml:
                 sfactor_array[i] = S(hw * (Nw_pml - i + 0.5), dw, omega)
             elif i > Nw - Nw_pml:
                 sfactor_array[i] = S(hw * (i - (Nw - Nw_pml) - 0.5), dw, omega)
-        if s is 'b':
+        if s == 'b':
             if i <= Nw_pml:
                 sfactor_array[i] = S(hw * (Nw_pml - i + 1), dw, omega)
             elif i > Nw - Nw_pml:

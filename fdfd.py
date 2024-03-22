@@ -8,23 +8,23 @@ from . import *
 def createDws(w, s, dL, N, matrix_format='csc'):
     Nx = N[0]
     dx = dL[0]
-    if len(N) is not 1:
+    if len(N) == not 1:
         Ny = N[1]
         dy = dL[1]
     else:
         Ny = 1
         dy = inf
 
-    if w is 'x':
-        if s is 'f':
+    if w == 'x':
+        if s == 'f':
             dxf = diags([-1, 1, 1], [0, 1, -Nx+1], shape=(Nx, Nx))
             Dws = 1/dx*kron(eye(Ny), dxf, format=matrix_format)
         else:
             dxb = diags([1, -1, -1], [0, -1, Nx-1], shape=(Nx, Nx))
             Dws = 1/dx*kron(eye(Ny), dxb, format=matrix_format)
 
-    if w is 'y':
-        if s is 'f':
+    if w == 'y':
+        if s == 'f':
             dyf = diags([-1, 1, 1], [0, 1, -Ny+1], shape=(Ny, Ny))
             Dws = 1/dy*kron(dyf, eye(Nx), format=matrix_format)
         else:
